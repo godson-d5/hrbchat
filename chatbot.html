@@ -40,13 +40,15 @@
             
          });
          $("body").on('DOMSubtreeModified', ".messageWrapper", function (e) {
+		 var actualChatCount = $('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').size();
              console.log('agentChatCount='+agentChatCount);
-             console.log('Agent chat'+$('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').size());
+             console.log('Agent chat'+actualChatCount);
+		
              var myArray = $('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').map(function() {
                  return $(this);
               }).get();
             console.log('myArray='+myArray);
-             if(agentChatCount != $('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').size()){
+             if(agentChatCount != actualChatCount){
                  ///Start
                  var cleanedChat = '';
                  var clientChatArr = myArray[agentChatCount].text().split(" ");
@@ -64,7 +66,7 @@
                 // }
                  //end
                  
-                 agentChatCount = $('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').size();
+                 agentChatCount = actualChatCount;
 		     console.log('agentChatCount updated to='+agentChatCount);
              }
              
