@@ -32,8 +32,8 @@
                   cleanedChat += clientChatArr[arrCount] + ' ';
                  }
              }
-              console.log('Actual'+$('.chasitorText').val().trim());
-             console.log('cleaned'+cleanedChat.trim());
+              //console.log('Actual'+$('.chasitorText').val().trim());
+             //console.log('cleaned'+cleanedChat.trim());
              if($('.chasitorText').val().trim().length != cleanedChat.trim().length){
              	$('.chasitorText').val(cleanedChat.trim());
              }
@@ -45,11 +45,12 @@
              var myArray = $('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').map(function() {
                  return $(this);
               }).get();
-            
+            console.log('myArray='+myArray);
              if(agentChatCount != $('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').size()){
                  ///Start
                  var cleanedChat = '';
                  var clientChatArr = myArray[agentChatCount].text().split(" ");
+		     console.log('clientChatArr='+clientChatArr.length);
                  for(var arrCount = 0; arrCount < clientChatArr.length; arrCount++){
                       if(jQuery.inArray( clientChatArr[arrCount].toLowerCase(), offensiveWords ) == -1){
                       cleanedChat += clientChatArr[arrCount] + ' ';
