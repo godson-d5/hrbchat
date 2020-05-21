@@ -56,8 +56,9 @@
                       cleanedChat += clientChatArr[arrCount] + ' ';
                      }
                  }
+		     console.log('cleanedChat='+cleanedChat);
                  if(myArray[agentChatCount].text().trim().length != cleanedChat.trim().length){
-                    myArray[agentChatCount].text(cleanedChat.trim());
+                    //myArray[agentChatCount].text(cleanedChat.trim());
                  }
                  //end
                  
