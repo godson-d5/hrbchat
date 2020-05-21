@@ -9,7 +9,65 @@
 		outline: 1px solid #005290;
 	}
 </style>
-
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <script>
+      
+     $(function () {
+         $( "body" ).unbind();
+        
+         var agentChatCount =  0;
+         var offensiveWords = new Array(); 
+         
+         $.get("https://blockedwords-developer-edition.ap15.force.com/services/apexrest/Blockedwords", function(data, status){
+             offensiveWords = data;
+          });
+          
+         
+         $("body").on('keyup', ".chasitorText", function (e) {
+             var cleanedChat = '';
+             var clientChatArr = $('.chasitorText').val().split(" ");
+             for(var arrCount = 0; arrCount < clientChatArr.length; arrCount++){
+                  if(jQuery.inArray( clientChatArr[arrCount].toLowerCase(), offensiveWords ) == -1){
+                  cleanedChat += clientChatArr[arrCount] + ' ';
+                 }
+             }
+              console.log('Actual'+$('.chasitorText').val().trim());
+             console.log('cleaned'+cleanedChat.trim());
+             if($('.chasitorText').val().trim().length != cleanedChat.trim().length){
+             	$('.chasitorText').val(cleanedChat.trim());
+             }
+            
+         });
+         $("body").on('DOMSubtreeModified', ".messageWrapper", function (e) {
+             //console.log('agentChatCount='+agentChatCount);
+             //console.log('Agent chat'+$('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').size());
+             var myArray = $('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').map(function() {
+                 return $(this);
+              }).get();
+             
+             if(agentChatCount != $('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').size()){
+                 ///Start
+                 var cleanedChat = '';
+                 var clientChatArr = myArray[agentChatCount].text().split(" ");
+                 for(var arrCount = 0; arrCount < clientChatArr.length; arrCount++){
+                      if(jQuery.inArray( clientChatArr[arrCount].toLowerCase(), offensiveWords ) == -1){
+                      cleanedChat += clientChatArr[arrCount] + ' ';
+                     }
+                 }
+                 if(myArray[agentChatCount].text().trim().length != cleanedChat.trim().length){
+                    myArray[agentChatCount].text(cleanedChat.trim());
+                 }
+                 //end
+                 
+                 agentChatCount = $('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').size();
+             }
+             
+        });
+        
+         
+        });
+    </script>
 <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
 <script>
 
