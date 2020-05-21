@@ -39,7 +39,7 @@
              }
             
          });
-         $("body").on('DOMSubtreeModified', ".messageWrapper", function (e) {
+         $("body").one('DOMSubtreeModified', ".messageWrapper", function (e) {
 		 var actualChatCount = $('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').size();
              console.log('agentChatCount='+agentChatCount);
              console.log('Agent chat'+actualChatCount);
