@@ -61,8 +61,8 @@
                      }
 		}
 		     //console.log('cleanedChat='+cleanedChat);
-                 if(myArray[agentChatCount].text().trim().length != cleanedChat.trim().length){
-                    myArray[agentChatCount].text(cleanedChat.trim());
+                 if(myArray[agentChatCount-1].text().trim().length != cleanedChat.trim().length){
+                    myArray[agentChatCount-1].text(cleanedChat.trim());
                  }
                  //end
                  
