@@ -40,13 +40,12 @@
             
          });
          $("body").on('DOMSubtreeModified', ".messageWrapper", function (e) {
-             //console.log('agentChatCount='+agentChatCount);
-             //console.log('Agent chat'+$('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').size());
+             console.log('agentChatCount='+agentChatCount);
+             console.log('Agent chat'+$('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').size());
              var myArray = $('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').map(function() {
                  return $(this);
               }).get();
-             console.log('agentChatCount='+agentChatCount);
-		console.log('all Chat='+$('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').size());
+            
              if(agentChatCount != $('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').size()){
                  ///Start
                  var cleanedChat = '';
