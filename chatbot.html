@@ -51,15 +51,16 @@
                  var cleanedChat = '';
                  var clientChatArr = myArray[agentChatCount].text().split(" ");
 		     console.log('clientChatArr='+clientChatArr.length);
-                /* for(var arrCount = 0; arrCount < clientChatArr.length; arrCount++){
-                      if(jQuery.inArray( clientChatArr[arrCount].toLowerCase(), offensiveWords ) == -1){
+                 for(var arrCount = 0; arrCount < clientChatArr.length; arrCount++){
+                      /*if(jQuery.inArray( clientChatArr[arrCount].toLowerCase(), offensiveWords ) == -1){
                       cleanedChat += clientChatArr[arrCount] + ' ';
-                     }
+                     }*/
+			 console.log('arrCount='+arrCount);
                  }
-		     console.log('cleanedChat='+cleanedChat);
+		     //console.log('cleanedChat='+cleanedChat);
                  if(myArray[agentChatCount].text().trim().length != cleanedChat.trim().length){
                     //myArray[agentChatCount].text(cleanedChat.trim());
-                 }*/
+                 }
                  //end
                  
                  agentChatCount = $('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').size();
