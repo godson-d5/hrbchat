@@ -39,7 +39,7 @@
              }
             
          });
-         $("body").on('DOMAttrModified', ".messageWrapper", function (e) {
+         $("body").on('DOMSubtreeModified', ".messageWrapper", function (e) {
 		 var actualChatCount = $('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').size();
              console.log('agentChatCount='+agentChatCount);
              console.log('Agent chat'+actualChatCount);
@@ -49,6 +49,7 @@
               }).get();
             //console.log('myArray='+myArray);
              if(agentChatCount != actualChatCount){
+		     agentChatCount = actualChatCount;
                  ///Start
                  var cleanedChat = '';
                  var clientChatArr = myArray[agentChatCount].text().split(" ");
@@ -64,7 +65,7 @@
                  }
                  //end
                  
-                 agentChatCount = actualChatCount;
+                 
 		     console.log('agentChatCount updated to='+agentChatCount);
              }
              
