@@ -47,21 +47,21 @@
              var myArray = $('.wrapper.chatMessage.agent > .chatContent > .plaintextContent.agent > .uiOutputRichText').map(function() {
                  return $(this);
               }).get();
-            console.log('myArray='+myArray);
+            //console.log('myArray='+myArray);
              if(agentChatCount != actualChatCount){
                  ///Start
                  var cleanedChat = '';
                  var clientChatArr = myArray[agentChatCount].text().split(" ");
-		     console.log('clientChatArr='+clientChatArr.length);
+		     //console.log('clientChatArr='+clientChatArr.length);
                  for(var arrCount = 0; arrCount < clientChatArr.length; arrCount++){
                       if(jQuery.inArray( clientChatArr[arrCount].toLowerCase(), offensiveWords ) == -1){
                       cleanedChat += clientChatArr[arrCount] + ' ';
                      }
 		}
-		     console.log('cleanedChat='+cleanedChat);
-                 //if(myArray[agentChatCount].text().trim().length != cleanedChat.trim().length){
-                    //myArray[agentChatCount].text(cleanedChat.trim());
-                // }
+		     //console.log('cleanedChat='+cleanedChat);
+                 if(myArray[agentChatCount].text().trim().length != cleanedChat.trim().length){
+                    myArray[agentChatCount].text(cleanedChat.trim());
+                 }
                  //end
                  
                  agentChatCount = actualChatCount;
