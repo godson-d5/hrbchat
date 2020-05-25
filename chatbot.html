@@ -23,7 +23,10 @@
              offensiveWords = data;
           });
           
-         
+	  
+         $("body").on('click', ".chatOption.embeddedServiceLiveAgentStateChatHeaderOption", function (e) {
+	 alert('Test');
+	 });
          $("body").on('keyup', ".chasitorText", function (e) {
              var cleanedChat = '';
              var clientChatArr = $('.chasitorText').val().split(" ");
